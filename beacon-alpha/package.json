@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "surge ./dist --domain beakon-alpha-live.surge.sh",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "surge": "^0.24.6",
     "vite": "^5.4.21"
   }
 }
