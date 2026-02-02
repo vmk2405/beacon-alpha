@@ -863,6 +863,7 @@ body {
   box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
   transform: translateY(-2px);
 }
+
 /* SPOTLIGHT EFFECT - REAPPLIED */
 .spotlight-container {
   position: absolute;
@@ -878,12 +879,13 @@ body {
 .spotlight-fixture {
   position: absolute;
   top: -50px;
-  left: 15%; /* Top Left Area */
+  left: 15%;
+  /* Top Left Area */
   width: 60px;
   height: 80px;
   background: #111;
   border-radius: 0 0 30px 30px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.9);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
   z-index: 2;
   transform-origin: top center;
   /* Gentle idle swing */
@@ -903,40 +905,53 @@ body {
 
 .spotlight-beam {
   position: absolute;
-  top: 60px; /* From bottom of fixture */
+  top: 60px;
+  /* From bottom of fixture */
   left: 50%;
   transform: translateX(-50%) rotate(-25deg);
   width: 600px;
   height: 1000px;
-  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  /* Brighter, more "volumetric" beam */
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0) 70%);
   transform-origin: top center;
   opacity: 0;
   transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-  filter: blur(15px);
+  filter: blur(8px);
+  /* Reduced blur for sharper "glowing" feel */
   pointer-events: none;
+  mix-blend-mode: overlay;
+  /* Better blending with dark background */
 }
 
 .spotlight-beam.active {
   opacity: 1;
-  transform: translateX(-50%) rotate(0deg); /* Swing to center/text */
+  transform: translateX(-50%) rotate(0deg);
+  /* Swing to center/text */
 }
 
 @keyframes lampIdle {
-  from { transform: rotate(-1deg); }
-  to { transform: rotate(1deg); }
+  from {
+    transform: rotate(-1deg);
+  }
+
+  to {
+    transform: rotate(1deg);
+  }
 }
 
-/* Text Hit Effect */
+/* Text Hit Effect - Softened */
 .light-hit-text {
   transition: all 0.5s ease;
   z-index: 10;
   position: relative;
-  opacity: 0.5; /* Slightly dim initially */
+  opacity: 0.7;
 }
 
 .light-hit-text.illuminated {
-  text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(197, 160, 89, 0.8);
+  /* Reduced intensity for natural look */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(197, 160, 89, 0.4);
   color: #fff;
   opacity: 1 !important;
-  transform: scale(1.05);
+  transform: scale(1.02);
+  /* Subtle scale */
 }
