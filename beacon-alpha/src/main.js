@@ -1,26 +1,12 @@
-// Main entry point
 import './style.css'
 
-// Scroll Animation Observer triggered by DOMContentLoaded
+// Main entry point for Vite/JS
+
+// Since we are using index.html as the entry point with vanilla JS, 
+// we mostly just need the CSS import. 
+// However, let's add the form handling logic here since it's cleaner.
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Intersection Observer for Reveal on Scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
-        observer.observe(el);
-    });
-
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
