@@ -863,3 +863,80 @@ body {
   box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
   transform: translateY(-2px);
 }
+/* SPOTLIGHT EFFECT - REAPPLIED */
+.spotlight-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.spotlight-fixture {
+  position: absolute;
+  top: -50px;
+  left: 15%; /* Top Left Area */
+  width: 60px;
+  height: 80px;
+  background: #111;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.9);
+  z-index: 2;
+  transform-origin: top center;
+  /* Gentle idle swing */
+  animation: lampIdle 3s ease-in-out infinite alternate;
+}
+
+.spotlight-fixture::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 200px;
+  background: #222;
+}
+
+.spotlight-beam {
+  position: absolute;
+  top: 60px; /* From bottom of fixture */
+  left: 50%;
+  transform: translateX(-50%) rotate(-25deg);
+  width: 600px;
+  height: 1000px;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  transform-origin: top center;
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(15px);
+  pointer-events: none;
+}
+
+.spotlight-beam.active {
+  opacity: 1;
+  transform: translateX(-50%) rotate(0deg); /* Swing to center/text */
+}
+
+@keyframes lampIdle {
+  from { transform: rotate(-1deg); }
+  to { transform: rotate(1deg); }
+}
+
+/* Text Hit Effect */
+.light-hit-text {
+  transition: all 0.5s ease;
+  z-index: 10;
+  position: relative;
+  opacity: 0.5; /* Slightly dim initially */
+}
+
+.light-hit-text.illuminated {
+  text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(197, 160, 89, 0.8);
+  color: #fff;
+  opacity: 1 !important;
+  transform: scale(1.05);
+}
