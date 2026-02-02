@@ -441,6 +441,70 @@ body {
   color: #fff;
 }
 
+/* FOG TO FOCUS SECTION */
+.fog-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.fog-step {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+}
+
+.fog-step:hover {
+  border-left-color: var(--color-accent);
+  background: linear-gradient(180deg, rgba(197, 160, 89, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.fog-step-number {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  line-height: 1;
+  transition: color 0.5s ease;
+}
+
+.fog-step:hover .fog-step-number {
+  color: rgba(197, 160, 89, 0.2);
+}
+
+.fog-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.fog-desc {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 10;
+}
+
+/* Glowing Horizontal Divider */
+.glow-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(197, 160, 89, 0.5) 50%, transparent 100%);
+  margin: 2rem 0;
+  opacity: 0.3;
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+}
+
 /* ANIMATIONS */
 @keyframes fadeUp {
   from {
