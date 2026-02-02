@@ -136,4 +136,31 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(counter => {
         counterObserver.observe(counter);
     });
+
+    // SPOTLIGHT INTERACTION
+    const contactSection = document.getElementById('contact');
+    const spotlight = document.getElementById('contactSpotlight');
+    const contactTitle = document.getElementById('contactTitle');
+
+    if (contactSection && spotlight && contactTitle) {
+        const spotlightObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 1. Swing the light in
+                    setTimeout(() => {
+                        spotlight.classList.add('active');
+                    }, 200);
+
+                    // 2. Hit the text (delayed sync)
+                    setTimeout(() => {
+                        contactTitle.classList.add('illuminated');
+                    }, 1000); // 800ms delay + swing time match
+
+                    spotlightObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        spotlightObserver.observe(contactSection);
+    }
 });

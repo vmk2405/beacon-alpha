@@ -259,9 +259,14 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-      <div class="container text-center">
-        <h2 class="section-display reveal-on-scroll">Step Into The Light.</h2>
+    <section id="contact" class="contact-section" style="position: relative; overflow: hidden;">
+      <!-- Spotlight Overlay -->
+      <div class="spotlight-container">
+        <div id="contactSpotlight" class="spotlight-beam"></div>
+      </div>
+
+      <div class="container text-center" style="position: relative; z-index: 1;">
+        <h2 id="contactTitle" class="section-display reveal-on-scroll light-hit-text">Step Into The Light.</h2>
         <p class="contact-sub reveal-on-scroll">The fog is lifting. Let’s chart your course.</p>
 
         <div class="contact-details reveal-on-scroll">
