@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const suffix = counter.innerText.includes('+') ? '+' : '';
 
                 let count = 1;
-                const duration = 1000; // 1 second (Fast)
+                const duration = 1300; // 1.3 seconds
                 const increment = target / (duration / 20);
 
                 const updateCount = () => {
