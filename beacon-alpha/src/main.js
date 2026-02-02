@@ -1,8 +1,7 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = `
-  <!-- Content is in index.html, this file just imports style.css for Vite -->
-`
+// Main entry point for Vite/JS
+
 // Since we are using index.html as the entry point with vanilla JS, 
 // we mostly just need the CSS import. 
 // However, let's add the form handling logic here since it's cleaner.
