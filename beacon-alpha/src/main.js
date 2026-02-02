@@ -104,4 +104,36 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
         observer.observe(el);
     });
+
+    // COUNTER ANIMATION
+    const counters = document.querySelectorAll('.animate-counter');
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const suffix = counter.innerText.includes('+') ? '+' : '';
+
+                let count = 1;
+                const duration = 2500; // 2.5 seconds for slow, cinematic feel
+                const increment = target / (duration / 20);
+
+                const updateCount = () => {
+                    count += increment;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count) + suffix;
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target + suffix;
+                    }
+                };
+                updateCount();
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
 });
