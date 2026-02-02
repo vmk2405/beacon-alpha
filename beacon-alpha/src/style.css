@@ -525,3 +525,27 @@ body {
   color: var(--color-text-muted);
   font-size: 0.9rem;
 }
+
+/* ANIMATION UTILITIES */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Soft Glow for CTA */
+.btn-soft-glow {
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+  transition: all 0.5s ease;
+}
+
+.btn-soft-glow:hover {
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+  transform: translateY(-2px);
+}
